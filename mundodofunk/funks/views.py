@@ -1,8 +1,10 @@
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 
 @require_http_methods(["GET", "POST", "PUT", "DELETE"])
-def api_view(request):
+@csrf_exempt
+def FunkView(request):
     if request.method == 'GET':
         data = {"message": "GET request recebida meu camarada"}
         return JsonResponse(data)
